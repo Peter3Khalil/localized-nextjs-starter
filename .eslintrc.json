@@ -1,0 +1,45 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+  "extends": [
+    "prettier",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": ["prettier", "@typescript-eslint", "react", "jsx-a11y"],
+  "rules": {
+    "no-console": "warn",
+    "no-var": "error",
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "react/no-unknown-property": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "@next/next/no-img-element": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../../*"],
+            "message": "Please use absolute imports"
+          }
+        ]
+      }
+    ]
+  }
+}
