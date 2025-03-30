@@ -1,16 +1,18 @@
-'use client';
+import { isClient } from '@/lib/utils';
 import { useLocale } from 'next-intl';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
 
 const useLanguageSwitcher = () => {
   const locale = useLocale();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams = useMemo(
+    () => (isClient() ? window.location.search : ''),
+    [],
+  );
 
   const language = locale === 'en' ? 'عربي' : 'English';
-  const queryString = searchParams.toString()
-    ? '?' + searchParams.toString()
-    : '';
+  const queryString = searchParams ? searchParams : '';
 
   const localizedPathname = pathname.startsWith('/ar')
     ? pathname.replace('/ar', '/en')

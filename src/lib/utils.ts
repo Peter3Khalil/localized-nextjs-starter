@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const getDirection = (language: string): 'rtl' | 'ltr' => {
   return language === 'ar' ? 'rtl' : 'ltr';
 };
+
+export function isClient() {
+  return typeof window !== 'undefined';
+}
